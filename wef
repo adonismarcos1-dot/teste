@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio 3 For Men | Barbearia Premium</title>
+    <meta name="description" content="Barbearia premium masculina. Cortes modernos, barboterapia e produtos exclusivos. Agende seu horário.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'royal-blue': '#0B1426',
+                        'navy-dark': '#050A14',
+                        'gold-primary': '#D4AF37',
+                        'gold-light': '#F4D03F',
+                        'gold-dark': '#B8860B',
+                        'silver': '#C0C0C0',
+                        'silver-light': '#E8E8E8'
+                    },
+                    fontFamily: {
+                        'oswald': ['Oswald', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-gold': 'pulse-gold 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shine': 'shine 3s linear infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'pulse-gold': {
+                            '0%, 100%': { opacity: 1, boxShadow: '0 0 20px rgba(212, 175, 55, 0.5)' },
+                            '50%': { opacity: .9, boxShadow: '0 0 40px rgba(212, 175, 55, 0.8)' },
+                        },
+                        shine: {
+                            '0%': { backgroundPosition: '-200% center' },
+                            '100%': { backgroundPosition: '200% center' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #050A14;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .bg-gradient-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #B8860B 100%);
+        }
+        
+        .border-gradient-gold {
+            border-image: linear-gradient(135deg, #D4AF37, #F4D03F) 1;
+        }
+        
+        .glass-effect {
+            background: rgba(11, 20, 38, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(5,10,20,0.95) 0%, rgba(11,20,38,0.85) 50%, rgba(5,10,20,0.95) 100%),
+                        url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .scissors-float {
+            position: absolute;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+            background-size: 200% auto;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-gold:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-gold::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+            opacity: 0;
+        }
+        
+        .btn-gold:hover::after {
+            animation: shine 0.6s ease-in-out;
+        }
+        
+        .nav-scrolled {
+            background: rgba(5, 10, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .service-icon {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .product-card {
+            background: linear-gradient(145deg, #0B1426 0%, #050A14 100%);
+            border: 1px solid rgba(192, 192, 192, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .product-card:hover {
+            border-color: #D4AF37;
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+        
+        .instagram-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .instagram-item img {
+            transition: transform 0.5s ease;
+        }
+        
+        .instagram-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .instagram-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(212, 175, 55, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .instagram-item:hover .instagram-overlay {
+            opacity: 1;
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .barber-pole {
+            width: 4px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                #D4AF37,
+                #D4AF37 10px,
+                #ffffff 10px,
+                #ffffff 20px,
+                #0B1426 20px,
+                #0B1426 30px
+            );
+            background-size: 200% 200%;
+            animation: scroll 20s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 100%; }
+        }
+        
+        .floating-whatsapp {
+            animation: pulse-gold 2s infinite;
+        }
+        
+        .text-shadow-gold {
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .divider-gold {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+        }
+    </style>
+</head>
+<body class="font-inter antialiased">
+
+    <!-- Elementos Flutuantes de Fundo -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <i class="fas fa-cut scissors-float text-9xl text-gold-primary top-20 left-10 rotate-12"></i>
+        <i class="fas fa-cut scissors-float text-8xl text-gold-primary bottom-40 right-20 -rotate-12"></i>
+        <i class="fas fa-cut scissors-float text-7xl text-gold-primary top-1/2 left-1/4 rotate-45"></i>
+        <i class="fas fa-cut scissors-float text-6xl text-gold-primary bottom-20 left-1/3 -rotate-12"></i>
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="fixed w-full top-0 z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-gold rounded-lg flex items-center justify-center shadow-lg shadow-gold-primary/20">
+                        <span class="font-oswald font-bold text-royal-blue text-2xl">3</span>
+                    </div>
+                    <div>
+                        <h1 class="font-oswald text-2xl font-bold tracking-wider text-white">STUDIO <span class="text-gold-primary">3</span></h1>
+                        <p class="text-xs text-silver tracking-[0.3em] uppercase">For Men</p>
+                    </div>
+                </div>
+
+                <!-- Menu Desktop -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-silver-light hover:text-gold-primary transition-colors duration-300 text-sm font-medium tracking-wide uppercase">Início</a>
+                    <a href="#servicos" class="text-silver-light hover:text-gold-primary transition-colors duration-300 text-sm font-medium tracking-wide uppercase">Serviços</a>
+                    <a href="#produtos" class="text-silver-light hover:text-gold-primary transition-colors duration-300 text-sm font-medium tracking-wide uppercase">Produtos</a>
+                    <a href="#galeria" class="text-silver-light hover:text-gold-primary transition-colors duration-300 text-sm font-medium tracking-wide uppercase">Galeria</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#agendar" class="btn-gold px-6 py-3 rounded-full font-oswald font-bold text-royal-blue uppercase tracking-wider text-sm shadow-lg hover:shadow-gold-primary/50 transition-all duration-300">
+                        Agendar Horário
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gold-primary text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-navy-dark/98 backdrop-blur-xl border-t border-gold-primary/20">
+            <div class="container mx-auto px-4 py-6 space-y-4">
+                <a href="#inicio" class="block text-silver-light hover:text-gold-primary py-2 text-lg font-oswald uppercase tracking-wider">Início</a>
+                <a href="#servicos" class="block text-silver-light hover:text-gold-primary py-2 text-lg font-oswald uppercase tracking-wider">Serviços</a>
+                <a href="#produtos" class="block text-silver-light hover:text-gold-primary py-2 text-lg font-oswald uppercase tracking-wider">Produtos</a>
+                <a href="#galeria" class="block text-silver-light hover:text-gold-primary py-2 text-lg font-oswald uppercase tracking-wider">Galeria</a>
+                <a href="#agendar" class="block btn-gold text-center py-3 rounded-lg font-oswald font-bold text-royal-blue uppercase mt-4">Agendar Agora</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-royal-blue/20 to-navy-dark"></div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left space-y-8 animate-fade-in-up">
+                    <div class="inline-block px-4 py-2 border border-gold-primary/30 rounded-full bg-gold-primary/5 backdrop-blur-sm mb-4">
+                        <span class="text-gold-primary text-xs font-bold tracking-[0.3em] uppercase">Barbearia Premium</span>
+                    </div>
+                    
+                    <h1 class="font-oswald text-5xl md:text-7xl lg:text-8xl font-bold leading-tight text-shadow-gold">
+                        MAIS QUE UM <br>
+                        <span class="text-gradient-gold">CORTE</span>,<br>
+                        SUA MELHOR <br>
+                        <span class="text-white">VERSÃO</span>
+                    </h1>
+                    
+                    <p class="text-silver text-lg md:text-xl max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Onde o estilo encontra a perfeição. Experiência única de cuidado masculino com produtos premium e profissionais especializados.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <a href="#agendar" class="btn-gold px-8 py-4 rounded-full font-oswald font-bold text-royal-blue uppercase tracking-wider text-lg shadow-xl hover:shadow-gold-primary/50 transition-all duration-300 flex items-center justify-center gap-2 group">
+                            <span>Agendar Agora</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        
+                        <a href="https://wa.me/5511999999999" target="_blank" class="px-8 py-4 rounded-full border-2 border-gold-primary text-gold-primary font-oswald font-bold uppercase tracking-wider text-lg hover:bg-gold-primary hover:text-royal-blue transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span>Fale Conosco</span>
+                        </a>
+                    </div>
+                    
+                    <div class="flex items-center justify-center lg:justify-start gap-8 pt-8 text-silver text-sm">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-star text-gold-primary"></i>
+                            <span>4.9/5 Avaliação</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-users text-gold-primary"></i>
+                            <span>+5.000 Clientes</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-certificate text-gold-primary"></i>
+                            <span>Premium</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:block relative">
+                    <div class="relative w-full h-[600px]">
+                        <img src="https://kimi-web-img.moonshot.cn/img/hanzo.com/31d1d668b353e3074040de10edf85ebfcf602f4e.jpg" 
+                             alt="Corte Degradê Premium" 
+                             class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl shadow-gold-primary/20 border border-gold-primary/20">
+                        <div class="absolute -bottom-6 -left-6 glass-effect p-6 rounded-xl border border-gold-primary/30 max-w-xs animate-float">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-gold rounded-full flex items-center justify-center">
+                                    <i class="fas fa-cut text-royal-blue text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-oswald font-bold text-lg">Corte Degradê</p>
+                                    <p class="text-silver text-sm">Especialidade da casa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-navy-dark to-transparent"></div>
+    </section>
+
+    <!-- Serviços Section -->
+    <section id="servicos" class="relative py-24 bg-navy-dark overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-gold-primary text-sm font-bold tracking-[0.3em] uppercase mb-4 block">Nossos Serviços</span>
+                <h2 class="font-oswald text-4xl md:text-6xl font-bold mb-6">
+                    EXPERIÊNCIA <span class="text-gradient-gold">COMPLETA</span>
+                </h2>
+                <div class="divider-gold w-24 mx-auto mb-6"></div>
+                <p class="text-silver max-w-2xl mx-auto text-lg">Cada serviço é uma obra de arte. Técnica apurada, produtos premium e atenção aos detalhes.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl p-8 text-center group scroll-reveal">
+                    <div class="service-icon w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-cut text-3xl text-gold-primary"></i>
+                    </div>
+                    <h3 class="font-oswald text-2xl font-bold mb-3 text-white">Corte Studio 3</h3>
+                    <p class="text-silver text-sm mb-4 leading-relaxed">Degradê perfeito, navalhado e acabamento impecável com produtos importados.</p>
+                    <div class="text-gold-primary font-oswald text-3xl font-bold mb-4">R$ 60</div>
+                    <button onclick="agendarServico('Corte Studio 3')" class="w-full py-3 border border-gold-primary/50 rounded-lg text-gold-primary hover:bg-gold-primary hover:text-royal-blue transition-all duration-300 font-medium text-sm uppercase tracking-wider">
+                        Agendar
+                    </button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-2xl p-8 text-center group scroll-reveal" style="transition-delay: 100ms;">
+                    <div class="service-icon w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-spa text-3xl text-gold-primary"></i>
+                    </div>
+                    <h3 class="font-oswald text-2xl font-bold mb-3 text-white">Barboterapia</h3>
+                    <p class="text-silver text-sm mb-4 leading-relaxed">Tratamento completo com toalha quente, óleos essenciais e massagem relaxante.</p>
+                    <div class="text-gold-primary font-oswald text-3xl font-bold mb-4">R$ 50</div>
+                    <button onclick="agendarServico('Barboterapia')" class="w-full py-3 border border-gold-primary/50 rounded-lg text-gold-primary hover:bg-gold-primary hover:text-royal-blue transition-all duration-300 font-medium text-sm uppercase tracking-wider">
+                        Agendar
+                    </button>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-2xl p-8 text-center group scroll-reveal" style="transition-delay: 200ms;">
+                    <div class="service-icon w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-eye text-3xl text-gold-primary"></i>
+                    </div>
+                    <h3 class="font-oswald text-2xl font-bold mb-3 text-white">Sobrancelha</h3>
+                    <p class="text-silver text-sm mb-4 leading-relaxed">Design masculino com linha navalha, realçando o olhar sem perder a naturalidade.</p>
+                    <div class="text-gold-primary font-oswald text-3xl font-bold mb-4">R$ 25</div>
+                    <button onclick="agendarServico('Sobrancelha')" class="w-full py-3 border border-gold-primary/50 rounded-lg text-gold-primary hover:bg-gold-primary hover:text-royal-blue transition-all duration-300 font-medium text-sm uppercase tracking-wider">
+                        Agendar
+                    </button>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card rounded-2xl p-8 text-center group scroll-reveal" style="transition-delay: 300ms;">
+                    <div class="service-icon w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-crown text-3xl text-gold-primary"></i>
+                    </div>
+                    <h3 class="font-oswald text-2xl font-bold mb-3 text-white">Combo Premium</h3>
+                    <p class="text-silver text-sm mb-4 leading-relaxed">Corte + Barba + Sobrancelha. O pacote completo para o homem moderno.</p>
+                    <div class="text-gold-primary font-oswald text-3xl font-bold mb-4">R$ 120</div>
+                    <button onclick="agendarServico('Combo Premium')" class="w-full py-3 border border-gold-primary/50 rounded-lg text-gold-primary hover:bg-gold-primary hover:text-royal-blue transition-all duration-300 font-medium text-sm uppercase tracking-wider">
+                        Agendar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Painel de Agendamento -->
+            <div id="agendar" class="glass-effect rounded-3xl p-8 md:p-12 border border-gold-primary/30 scroll-reveal">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="font-oswald text-3xl md:text-4xl font-bold mb-4">Pronto para renovar seu visual?</h3>
+                        <p class="text-silver mb-6 text-lg">Agende seu horário de forma rápida e prática. Escolha o melhor dia e horário para você.</p>
+                        <ul class="space-y-3 text-silver-light mb-8">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-gold-primary"></i>
+                                <span>Agendamento 100% online</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-gold-primary"></i>
+                                <span>Confirmação imediata no WhatsApp</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-gold-primary"></i>
+                                <span>Cancelamento gratuito até 2h antes</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <a href="https://calendly.com" target="_blank" class="btn-gold w-full py-4 rounded-xl font-oswald font-bold text-royal-blue uppercase tracking-wider text-lg shadow-xl hover:shadow-gold-primary/50 transition-all duration-300 flex items-center justify-center gap-3">
+                            <i class="far fa-calendar-alt text-xl"></i>
+                            <span>Agendar Online</span>
+                        </a>
+                        <a href="https://wa.me/5511999999999" target="_blank" class="w-full py-4 rounded-xl border-2 border-gold-primary text-gold-primary font-oswald font-bold uppercase tracking-wider text-lg hover:bg-gold-primary hover:text-royal-blue transition-all duration-300 flex items-center justify-center gap-3">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span>Agendar pelo WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos Section -->
+    <section id="produtos" class="relative py-24 bg-royal-blue overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(212,175,55,0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-gold-primary text-sm font-bold tracking-[0.3em] uppercase mb-4 block">Loja Online</span>
+                <h2 class="font-oswald text-4xl md:text-6xl font-bold mb-6">
+                    PRODUTOS <span class="text-gradient-gold">PREMIUM</span>
+                </h2>
+                <div class="divider-gold w-24 mx-auto mb-6"></div>
+                <p class="text-silver max-w-2xl mx-auto text-lg">Cuidados profissionais para manter seu estilo em casa. Produtos importados e selecionados.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Produto 1 -->
+                <div class="product-card rounded-2xl overflow-hidden group scroll-reveal">
+                    <div class="relative h-64 overflow-hidden bg-gradient-to-b from-silver/5 to-transparent">
+                        <img src="https://images.unsplash.com/photo-1621607512214-68297480165e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Pomada Modeladora" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-gold-primary text-royal-blue px-3 py-1 rounded-full text-xs font-bold">MAIS VENDIDO</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-oswald text-xl font-bold mb-2">Pomada Modeladora</h3>
+                        <p class="text-silver text-sm mb-4">Fixação média, brilho natural. Base à água, fácil de lavar.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-gold-primary font-oswald text-2xl font-bold">R$ 89</div>
+                            <a href="https://wa.me/5511999999999?text=Olá! Gostaria de comprar a Pomada Modeladora" target="_blank" 
+                               class="px-4 py-2 bg-gold-primary/10 border border-gold-primary rounded-lg text-gold-primary hover:bg-gold-primary hover:text-royal-blue transition-all duration-300 text-sm font-medium">
+                                <i class="fab fa-whatsapp mr-2"></i>Comprar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="product-card rounded-2xl overflow-hidden group scroll-reveal" style="transition-delay: 100ms;">
+                    <div class="relative h-64 overflow-hidden bg-gradient-to-b from-silver/5 to-transparent">
+                        <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Óleo para Barba" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-oswald text-xl font-bold mb-2">Óleo para Barba</h3>
+                        <p class="text-silver text-sm mb-4">Hidratação profunda, aroma amadeirado premium. 30ml.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-gold-primary font-oswald text-2xl font-bold">R$ 75</div>
+                            <a href="https://wa.me/5511999999999?text=Olá! Gostaria de comprar o Óleo para Barba" target="_blank" 
+                               class="px-4 py-2 bg-gold-primary/10 border border-gold-primary rounded-lg text-gold-primary hover:bg-gold-primary hover:text-royal-blue transition-all duration-300 text-sm font-medium">
+                                <i class="fab fa-whatsapp mr-2"></i>Comprar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 3 -->
+                <div class="product-card rounded-2xl overflow-hidden group scroll-reveal" style="transition-delay: 200ms;">
+                    <div class="relative h-64 overflow-hidden bg-gradient-to-b from-silver/5 to-transparent">
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Kit Completo" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">-15%</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-oswald text-xl font-bold mb-2">Kit Completo</h3>
+                        <p class="text-silver text-sm mb-4">Shampoo, condicionador, óleo e balm. Tudo que você precisa.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-silver line-through text-sm">R$ 320</span>
+                                <div class="text-gold-primary font-oswald text-2xl font-bold">R$ 272</div>
+                            </div>
+                            <a href="https://wa.me/5511999999999?text=Olá! Gostaria de comprar o Kit Completo" target="_blank" 
+                               class="px-4 py-2 bg-gold-primary/10 border border-gold-primary rounded-lg text-gold-primary hover:bg-gold-primary hover:text-royal-blue transition-all duration-300 text-sm font-medium">
+                                <i class="fab fa-whatsapp mr-2"></i>Comprar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria Instagram -->
+    <section id="galeria" class="relative py-24 bg-navy-dark overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-gold-primary text-sm font-bold tracking-[0.3em] uppercase mb-4 block">@studio3formen</span>
+                <h2 class="font-oswald text-4xl md:text-6xl font-bold mb-6">
+                    CONHEÇA NOSSO <span class="text-gradient-gold">TRABALHO</span>
+                </h2>
+                <div class="divider-gold w-24 mx-auto mb-6"></div>
+                <p class="text-silver max-w-2xl mx-auto text-lg">Siga-nos no Instagram e acompanhe os melhores cortes do dia.</p>
+            </div>
+
+            <div class="instagram-grid max-w-4xl mx-auto scroll-reveal">
+                <div class="instagram-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.pallmallbarbers.com/c46bca892b22770184b4723da699850d97bf687d.jpg" alt="Corte 1" class="w-full h-full object-cover">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram text-3xl text-white"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/hanzo.com/31d1d668b353e3074040de10edf85ebfcf602f4e.jpg" alt="Corte 2" class="w-full h-full object-cover">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram text-3xl text-white"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/img.peerspace.com/81a725620ee2c6f02c91265550c36f40df17c418" alt="Barbearia" class="w-full h-full object-cover">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram text-3xl text-white"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/60b3105d949a27aff18699abe967c05a2a309742.jpeg" alt="Interior" class="w-full h-full object-cover">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram text-3xl text-white"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/static.vecteezy.com/8c41f100104b92c1d239974060318a5ef4d58815.jpg" alt="Ferramentas" class="w-full h-full object-cover">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram text-3xl text-white"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/e83562807f12e37af9a27ff1e9808e259cb225ca.jpg" alt="Produtos" class="w-full h-full object-cover">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram text-3xl text-white"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://instagram.com/studio3formen" target="_blank" 
+                   class="inline-flex items-center gap-3 px-8 py-4 border-2 border-gold-primary text-gold-primary rounded-full font-oswald font-bold uppercase tracking-wider hover:bg-gold-primary hover:text-royal-blue transition-all duration-300">
+                    <i class="fab fa-instagram text-xl"></i>
+                    <span>Seguir no Instagram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative bg-royal-blue border-t border-gold-primary/20 pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <!-- Logo e Descrição -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-gold rounded-lg flex items-center justify-center">
+                            <span class="font-oswald font-bold text-royal-blue text-2xl">3</span>
+                        </div>
+                        <div>
+                            <h3 class="font-oswald text-2xl font-bold tracking-wider text-white">STUDIO <span class="text-gold-primary">3</span></h3>
+                            <p class="text-xs text-silver tracking-[0.3em] uppercase">For Men</p>
+                        </div>
+                    </div>
+                    <p class="text-silver mb-6 max-w-md leading-relaxed">
+                        A melhor experiência em cuidados masculinos. Técnica, estilo e tradição se encontram aqui para fazer você sentir-se único.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gold-primary/10 border border-gold-primary/30 flex items-center justify-center text-gold-primary hover:bg-gold-primary hover:text-royal-blue transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gold-primary/10 border border-gold-primary/30 flex items-center justify-center text-gold-primary hover:bg-gold-primary hover:text-royal-blue transition-all duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gold-primary/10 border border-gold-primary/30 flex items-center justify-center text-gold-primary hover:bg-gold-primary hover:text-royal-blue transition-all duration-300">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contato -->
+                <div>
+                    <h4 class="font-oswald text-lg font-bold mb-6 text-white uppercase tracking-wider">Contato</h4>
+                    <ul class="space-y-4 text-silver">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-gold-primary mt-1"></i>
+                            <span>Rua Augusta, 1500 - Consolação<br>São Paulo, SP</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone text-gold-primary"></i>
+                            <span>(11) 99999-9999</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-gold-primary"></i>
+                            <span>contato@studio3.com.br</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Horários -->
+                <div>
+                    <h4 class="font-oswald text-lg font-bold mb-6 text-white uppercase tracking-wider">Funcionamento</h4>
+                    <ul class="space-y-3 text-silver">
+                        <li class="flex justify-between">
+                            <span>Seg - Sex</span>
+                            <span class="text-white">09h - 20h</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sábado</span>
+                            <span class="text-white">09h - 18h</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Domingo</span>
+                            <span class="text-gold-primary">Fechado</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gold-primary/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-silver text-sm">&copy; 2024 Studio 3 For Men. Todos os direitos reservados.</p>
+                <p class="text-silver text-sm">Desenvolvido com <i class="fas fa-heart text-gold-primary mx-1"></i> para você</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://wa.me/5511999999999" target="_blank" 
+       class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl floating-whatsapp transition-all duration-300 hover:scale-110 group">
+        <i class="fab fa-whatsapp text-3xl"></i>
+        <span class="absolute right-full mr-4 bg-white text-gray-800 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+            Dúvidas? Chame no Zap!
+        </span>
+    </a>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('nav-scrolled');
+            } else {
+                header.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+
+        // Função para agendar serviço
+        function agendarServico(servico) {
+            const mensagem = `Olá! Gostaria de agendar um horário para: ${servico}`;
+            const url = `https://wa.me/5511999999999?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for floating scissors
+        document.addEventListener('mousemove', (e) => {
+            const scissors = document.querySelectorAll('.scissors-float');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            scissors.forEach((scissor, index) => {
+                const speed = (index + 1) * 20;
+                const xOffset = (window.innerWidth / 2 - e.clientX) / speed;
+                const yOffset = (window.innerHeight / 2 - e.clientY) / speed;
+                scissor.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${xOffset}deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
